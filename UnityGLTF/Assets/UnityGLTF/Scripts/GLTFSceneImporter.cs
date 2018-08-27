@@ -1455,7 +1455,8 @@ namespace UnityGLTF
 
 		protected virtual BufferCacheData ConstructBufferFromGLB(int bufferIndex)
 		{
-			GLTFParser.SeekToBinaryChunk(_gltfStream.Stream, bufferIndex, _gltfStream.StartPosition);  // sets stream to correct start position
+			//HACK: Fix Ensight Import by setting _gltfStream.StartPosition to default
+			GLTFParser.SeekToBinaryChunk(_gltfStream.Stream, bufferIndex);  // sets stream to correct start position
 			return new BufferCacheData
 			{
 				Stream = _gltfStream.Stream,
